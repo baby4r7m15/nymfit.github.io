@@ -1,75 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Great+Vibes&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Great+Vibes&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --background: hsl(213 35% 10%);
-  --foreground: hsl(210 40% 96%);
 
-  --card: hsl(213 30% 14%);
-  --card-foreground: hsl(210 40% 96%);
+  --background: 213 35% 10%;
+  --foreground: 210 40% 96%;
 
-  --primary: hsl(350 100% 82%);
-  --primary-foreground: hsl(350 40% 15%);
+  --card: 213 30% 14%;
+  --card-foreground: 210 40% 96%;
 
-  --secondary: hsl(199 100% 74%);
-  --secondary-foreground: hsl(213 40% 8%);
+  --popover: 213 30% 14%;
+  --popover-foreground: 210 40% 96%;
 
-  --muted: hsl(213 25% 18%);
-  --muted-foreground: hsl(213 18% 58%);
+  --primary: 350 100% 82%;
+  --primary-foreground: 350 40% 15%;
 
-  --accent: hsl(213 40% 19%);
-  --accent-foreground: hsl(199 100% 82%);
+  --secondary: 199 100% 74%;
+  --secondary-foreground: 213 40% 8%;
 
-  --border: hsl(213 25% 22%);
+  --muted: 213 25% 18%;
+  --muted-foreground: 213 18% 58%;
 
-  --font-display: 'Pacifico', cursive;
-  --font-script: 'Great Vibes', cursive;
-  --font-sans: 'DM Sans', sans-serif;
+  --accent: 213 40% 19%;
+  --accent-foreground: 199 100% 82%;
+
+  --border: 213 25% 22%;
+  --input: 213 25% 22%;
+  --ring: 350 100% 82%;
+
+  --radius: 1.25rem;
+
+  --font-display: "Pacifico", cursive;
+  --font-script: "Great Vibes", cursive;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
+  border-width: 0;
+  border-style: solid;
+
+  border-color: hsl(var(--border));
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
   overscroll-behavior-y: none;
+  text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-}
-
-/* HERO BACKGROUND */
-
-.bg-hero-gradient {
   background:
-    linear-gradient(
-      180deg,
-      hsl(199 100% 74%) 0%,
-      hsl(0 0% 100%) 50%,
-      hsl(350 100% 82%) 100%
-    );
+    radial-gradient(
+      circle at top left,
+      hsl(350 100% 82% / 0.12),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at top right,
+      hsl(199 100% 74% / 0.14),
+      transparent 35%
+    ),
+
+    hsl(var(--background));
+
+  color: hsl(var(--foreground));
+
+  font-family: var(--font-sans);
+
+  line-height: 1.5;
+
+  overflow-x: hidden;
 }
 
-/* TEXT */
-
-.text-gradient {
-  background: linear-gradient(
-    135deg,
-    hsl(350 100% 82%) 0%,
-    hsl(199 100% 74%) 100%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* DISPLAY FONT */
 
 .font-display {
   font-family: var(--font-display);
@@ -79,23 +88,25 @@ body {
   font-family: var(--font-script);
 }
 
-/* GLOWS */
+/* TEXT GRADIENT */
 
-.glow-pink {
-  box-shadow:
-    0 0 40px hsl(350 100% 82% / 0.3),
-    0 0 80px hsl(350 100% 82% / 0.15);
+.text-gradient {
+  background:
+    linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--secondary)) 100%
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.glow-blue {
-  box-shadow:
-    0 0 40px hsl(199 100% 74% / 0.25),
-    0 0 80px hsl(199 100% 74% / 0.12);
-}
-
-/* CARDS */
+/* CARD */
 
 .card-glow {
+
   background:
     linear-gradient(
       135deg,
@@ -103,26 +114,69 @@ body {
       hsl(213 30% 14%) 100%
     );
 
-  border: 1px solid hsl(213 25% 20%);
-  border-radius: 28px;
-  backdrop-filter: blur(14px);
-}
+  border:
+    1px solid hsl(213 25% 20%);
 
-/* FUN SHAPES */
-
-.bubble-border {
   border-radius:
-    60% 40% 55% 45% /
-    45% 55% 45% 55%;
+    var(--radius);
+
+  backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.25);
 }
 
-/* HIDE SCROLLBAR */
+/* GLOWS */
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.glow-pink {
+  box-shadow:
+    0 0 40px hsl(var(--primary) / 0.30),
+    0 0 80px hsl(var(--primary) / 0.15);
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.glow-blue {
+  box-shadow:
+    0 0 40px hsl(var(--secondary) / 0.25),
+    0 0 80px hsl(var(--secondary) / 0.12);
+}
+
+/* BUTTON */
+
+.primary-button {
+
+  background:
+    hsl(var(--primary));
+
+  color:
+    hsl(var(--primary-foreground));
+
+  padding:
+    16px 30px;
+
+  border-radius:
+    999px;
+
+  text-decoration:
+    none;
+
+  font-weight:
+    700;
+
+  transition:
+    0.25s ease;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
 }
