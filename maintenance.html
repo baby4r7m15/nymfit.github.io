@@ -20,14 +20,17 @@ body{
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle at top, rgba(255,255,255,.9), transparent 40%),
-    radial-gradient(circle at 20% 20%, rgba(255,200,230,.4), transparent 25%),
-    radial-gradient(circle at 80% 30%, rgba(200,230,255,.4), transparent 25%),
-    linear-gradient(180deg,#fff4fb,#ffeaf6);
-  overflow:hidden;
-  color:#6d5a79;
-}
+    linear-gradient(
+      180deg,
+      #7dd3fc 0%,
+      #ffffff 50%,
+      #ffb6d9 100%
+    );
 
+  color: var(--foreground);
+
+  min-height: 100vh;
+}
 /* sparkles */
 .sparkles{
   position:absolute;
